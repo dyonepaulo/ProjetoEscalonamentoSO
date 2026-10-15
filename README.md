@@ -4,8 +4,8 @@ Este é um projeto da disciplina de **Sistemas Operacionais** do curso de Análi
 
 O grupo é composto por:
 
-*Dyone Paulo* </br>
 *Wender Diran* </br>
+*Dyone Paulo* </br>
 *Pablo Donato* </br>
 *Erick Natan* </br>
 

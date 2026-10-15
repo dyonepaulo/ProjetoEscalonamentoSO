@@ -1,16 +1,16 @@
 // feito por erick
 #include <stdio.h>
-// declarei os dados de um processo numa struct
-typedef struct
-{
-    int id;
-    int prioridade;
-    int chegada;
-    int duracao;
-} processo;
+#include "../library.h"
+
 // começo do codigo
-int main()
+void priority(fila *fila)
 {
+    if (fila->Inicio_fila = NULL)
+    {
+        printf("Nao há processos");
+        return 0;
+    }
+
     int id = 0;
     int n;
     printf("\n Digite o numero de processos: ");
@@ -32,10 +32,9 @@ int main()
         todos_processos[i].id = id;
     }
     // já aqui mostra a tabela dos processos antes de organizados.
-        printf("\nprocesso id | chegada |  duracao |  prioridade");
+    printf("\nprocesso id | chegada |  duracao |  prioridade");
     for (int i = 0; i < n; i++)
     {
         printf("\n     %d    ,     %d    ,     %d    ,     %d    ", todos_processos[i].id, todos_processos[i].chegada, todos_processos[i].duracao, todos_processos[i].prioridade);
     }
-    
 }
