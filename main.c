@@ -5,17 +5,13 @@
 int main()
 {
     int opcao = 67;
-    fila *fila = calloc(1, sizeof(fila));
-
-    if (fila == NULL)
-    {
-        printf("Erro de Alocacao");
-        exit(1);
-    }
+    int n = 0;
+    processo *todos_processos = calloc(1, sizeof(processo));
+    processo *temp;
 
     while (opcao != 0)
     {
-        system("clear");
+
         printf("\n========ESCOLHA UMA OPCAO========\n"
                "\n1. FCFS (First Come, First Served)"
                "\n2. SJF (Shortest Job First)"
@@ -26,34 +22,76 @@ int main()
                "\n7. Listar Processos"
                "\n0. Sair"
                "\n=================================\n"
-               "\nDigite um numero:");
+               "\nDigite um numero: ");
         scanf("%d", &opcao);
         switch (opcao)
         {
         case 1:
-            fcfs(fila);
+            // fcfs();
             break;
         case 2:
-            sjf(fila);
+            // sjf();
             break;
         case 3:
-            rr(fila);
+            // rr();
             break;
         case 4:
-            priority(fila);
+            system("clear");
+            priority(todos_processos, n);
             break;
         case 5:
-            break;
-        case 6:
-            break;
-        case 7:
-            if (fila->Inicio_fila = NULL)
+            n++;
+            if (todos_processos[0].id != 0) // verifica se o primeiro indice do vetor tem processo ou n
             {
-                printf("Nao há processos");
-                break; 
+                temp = realloc(todos_processos, n * sizeof(processo));
+                if (temp == NULL)
+                {
+                    printf("Erro de Alocacao");
+                    exit(1);
+                }
+                else
+                {
+                    todos_processos = temp;
+                    goto linha_61; // pula pra linha que ira adicionar o processo
+                }
             }
-            
-            break;
+            else
+            { // preenche no primeiro vetor caso esteja vazio
+
+            linha_61:
+                printf("\nDigite a prioridade do processo: ");
+                scanf("%d", &todos_processos[n - 1].prioridade);
+
+                printf("\nDigite a duracao do processo: ");
+                scanf("%d", &todos_processos[n - 1].duracao);
+
+                printf("\nDigite a chegada do processo: ");
+                scanf("%d", &todos_processos[n - 1].chegada);
+
+                todos_processos[n - 1].id++;
+                // printf("%d", todos_processos[n - 1].id);
+                break;
+            case 6:
+                break;
+            case 7:
+                system("clear");
+                if (todos_processos[0].id == 0) // verfica se tem algum processo na lista
+                {
+                    printf("\nNao há processos\n");
+                    break;
+                }
+                printf("+------+-------------+----------+---------+\n");
+                printf("| ID   | Prioridade  | Duracao  | Chegada |\n");
+                printf("+------+-------------+----------+---------+\n");
+                for (int i = 0; i < n; i++)
+                {
+                    printf("| %-4d | %-11d | %-8d | %-7d |\n",
+                           todos_processos[i].id, todos_processos[i].prioridade, todos_processos[i].duracao, todos_processos[i].chegada);
+                }
+                printf("+------+-------------+----------+---------+\n");
+
+                break;
+            }
         }
     }
     return 0;
