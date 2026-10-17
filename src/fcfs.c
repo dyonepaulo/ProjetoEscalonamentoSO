@@ -4,6 +4,7 @@
 // Feito por Wender
 void fcfs(processo *processos, int n)
 {
+    // verifica se existem processos cadastrados
     if (n == 0)
     {
         printf("\n================"
