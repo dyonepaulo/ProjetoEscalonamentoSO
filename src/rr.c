@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "../library.h"
 
-void rr(fila *fila)
+void rr(processo *processos, int n)
 {
-    if (fila->Inicio_fila = NULL)
+    if (processos[1].id == 0) // verfica se tem algum processo na lista
     {
-        printf("Nao há processos");
-        return 0;
+        printf("\n================"
+               "\nNao há processos"
+               "\n================");
+        return;
     }
 }

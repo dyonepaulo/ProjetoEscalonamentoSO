@@ -1,39 +1,42 @@
 // feito por erick
 #include <stdio.h>
+#include <stdlib.h>
 #include "../library.h"
 
 // começo do codigo
-void priority(processo *todos_processos, int n)
+void priority(processo *processos, int n)
 {
-    if (todos_processos[1].id == 0) // verfica se tem algum processo na lista
+    if (processos[1].id == 0) // verfica se tem algum processo na lista
     {
-        printf("\nNao há processos\n");
+        printf("\n================"
+               "\nNao há processos"
+               "\n================");
         return;
     }
+    processo *todos_processos = malloc(n * sizeof(*todos_processos));
+    for (int i = 0; i < n; i++)
+    {
+        todos_processos[i] = processos[i];
+    }
+
     processo temp;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = i + 1; j < n; j++)
         {
-            if (todos_processos[i].prioridade < todos_processos[j].prioridade)
+            if (todos_processos[i].prioridade > todos_processos[j].prioridade)
             {
                 temp = todos_processos[i];
-                todos_processos[j] = todos_processos[j];
-                todos_processos[i] = temp;
+                todos_processos[i] = todos_processos[j];
+                todos_processos[j] = temp;
             }
         }
     }
 
     // já aqui mostra a tabela dos processos depois de organizados.
     printf("+-----------------------------------+\n"
-           "| TABELA DE EXECUCAO POR PRIORIDADE |\n"
-           "+------+-------------+----------+---------+-------------------+\n");
-    printf("| ID   | Prioridade  | Duracao  | Chegada | Ordem de execucao |\n");
-    printf("+------+-------------+----------+---------+-------------------+\n");
-    for (int i = 0; i < n; i++)
-    {
-        printf("| %-4d | %-11d | %-8d | %-7d | %-17d |\n",
-               todos_processos[i].id, todos_processos[i].prioridade, todos_processos[i].duracao, todos_processos[i].chegada, i+1);
-    }
-    printf("+------+-------------+----------+---------+-------------------+\n");
+           "| TABELA DE EXECUCAO POR PRIORIDADE |\n");
+    tabela_execucao(todos_processos, n);
+    free(todos_processos);
+    return;
 }

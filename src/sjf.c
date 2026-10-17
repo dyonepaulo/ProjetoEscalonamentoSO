@@ -1,27 +1,42 @@
 
 #include "../library.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 // feito pelo goat dyone
-void sjf(fila *fila)
+void sjf(processo *processos, int n)
 {
-    if (fila->Inicio_fila = NULL)
+    if (processos[1].id == 0) // verfica se tem algum processo na lista
     {
-        printf("Nao há processos");
-        return 0;
+        printf("\n================"
+               "\nNao há processos"
+               "\n================");
+        return;
     }
-
-    int n, id;
-    processo auxiliar;  
-
-    // bloco responsavel por organizar os processos com base na execução do menor tempo para o maior
+    processo *todos_processos = malloc(n * sizeof(*todos_processos));
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        todos_processos[i] = processos[i];
+    }
+
+    processo temp;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
         {
-            if (fila->Inicio_fila->processo.duracao < todos_processos[j].duracao)
+            if (todos_processos[i].duracao > todos_processos[j].duracao)
             {
+                temp = todos_processos[i];
+                todos_processos[i] = todos_processos[j];
+                todos_processos[j] = temp;
             }
         }
     }
+
+    // já aqui mostra a tabela dos processos depois de organizados.
+    printf("+---------------------------------------------+\n"
+           "| TABELA DE EXECUCAO SJF (Shortest Job First) |\n");
+    tabela_execucao(todos_processos, n);
+    free(todos_processos);
+    return;
 }

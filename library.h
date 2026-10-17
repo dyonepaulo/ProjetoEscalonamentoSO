@@ -26,9 +26,13 @@ typedef struct
 } fila;
 
 // funcoes de cada tipo de escalonamento
-void priority(processo *todos_processos, int n);
-void rr(fila *inicio_fila);
-void sjf(fila *inicio_fila);
-void fcfs(fila *inicio_fila);
+void priority(processo *processos, int n);
+void rr(processo *processos, int n);
+void sjf(processo *processos, int n);
+void fcfs(processo *processos, int n);
+
+// funcoes auxiliares 
+void tabela_execucao(processo *todos_processos, int n);
+void listar_processos(int n, processo *todos_processos);
 
 #endif

@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "../library.h"
 // Feito por Wender
-void fcfs(fila *fila)
+void fcfs(processo *processos, int n)
 {
-    if (fila->Inicio_fila == NULL)
+    if (processos[1].id == 0) // verfica se tem algum processo na lista
     {
-        printf("Nao há processos");
+        printf("\n================"
+               "\nNao há processos"
+               "\n================");
         return;
     }
 }

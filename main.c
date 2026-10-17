@@ -8,7 +8,7 @@ int main()
     int n = 0;
     processo *todos_processos = calloc(1, sizeof(processo));
     processo *temp;
-
+    system("clear");
     while (opcao != 0)
     {
 
@@ -27,19 +27,30 @@ int main()
         switch (opcao)
         {
         case 1:
+            system("clear");
             // fcfs();
             break;
         case 2:
-            // sjf();
+            system("clear");
+            printf("\n+---------------------------------------+"
+                   "\n| Lista dos processos sem escalonamento |\n");
+            listar_processos(n, todos_processos);
+            sjf(todos_processos, n);
             break;
+
         case 3:
+            system("clear");
             // rr();
             break;
         case 4:
             system("clear");
+            printf("\n+---------------------------------------+"
+                   "\n| Lista dos processos sem escalonamento |\n");
+            listar_processos(n, todos_processos);
             priority(todos_processos, n);
             break;
         case 5:
+            system("clear");
             n++;
             if (todos_processos[0].id != 0) // verifica se o primeiro indice do vetor tem processo ou n
             {
@@ -69,30 +80,24 @@ int main()
                 scanf("%d", &todos_processos[n - 1].chegada);
 
                 todos_processos[n - 1].id++;
-                // printf("%d", todos_processos[n - 1].id);
                 break;
             case 6:
+                system("clear");
                 break;
             case 7:
                 system("clear");
                 if (todos_processos[0].id == 0) // verfica se tem algum processo na lista
                 {
-                    printf("\nNao há processos\n");
+                    printf("\n================"
+                           "\nNao há processos"
+                           "\n================");
                     break;
                 }
-                printf("+------+-------------+----------+---------+\n");
-                printf("| ID   | Prioridade  | Duracao  | Chegada |\n");
-                printf("+------+-------------+----------+---------+\n");
-                for (int i = 0; i < n; i++)
-                {
-                    printf("| %-4d | %-11d | %-8d | %-7d |\n",
-                           todos_processos[i].id, todos_processos[i].prioridade, todos_processos[i].duracao, todos_processos[i].chegada);
-                }
-                printf("+------+-------------+----------+---------+\n");
-
+                listar_processos(n, todos_processos);
                 break;
             }
         }
     }
+    free(todos_processos);
     return 0;
 }
