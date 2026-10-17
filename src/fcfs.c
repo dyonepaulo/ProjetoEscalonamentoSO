@@ -12,7 +12,23 @@ void fcfs(processo *processos, int n)
                "\n================\n");
         return;
     }
+
+processo aux;
+
+// organiza os processos pelo tempo de chegada
+for (int i = 0; i < n - 1; i++)
+{
+    for (int j = i + 1; j < n; j++)
+    {
+        if (processos[i].chegada > processos[j].chegada)
+        {
+            aux = processos[i];
+            processos[i] = processos[j];
+            processos[j] = aux;
+        }
+    }
 }
+
 // mostra os processos cadastrados
 printf("\n===== PROCESSOS =====\n");
 
@@ -25,3 +41,4 @@ for (int i = 0; i < n; i++)
 }
 
 printf("=====================\n");
+}
