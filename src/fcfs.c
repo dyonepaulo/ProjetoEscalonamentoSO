@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../library.h"
 
 // Feito por Wender
@@ -12,33 +13,63 @@ void fcfs(processo *processos, int n)
                "\n================\n");
         return;
     }
+// cria uma copia dos processos
+processo *copia = malloc(n * sizeof(processo));
 
-processo aux;
+if (copia == NULL)
+{
+    printf("Erro ao alocar memoria\n");
+    return;
+}
+
+// copia os processos para nao alterar o vetor original
+for (int i = 0; i < n; i++)
+{
+    copia[i] = processos[i];
+}
 
 // organiza os processos pelo tempo de chegada
+processo aux;
+
 for (int i = 0; i < n - 1; i++)
 {
     for (int j = i + 1; j < n; j++)
     {
-        if (processos[i].chegada > processos[j].chegada)
+    if (copia[i].chegada > copia[j].chegada ||
+    (copia[i].chegada == copia[j].chegada &&
+    copia[i].id > copia[j].id))
         {
-            aux = processos[i];
-            processos[i] = processos[j];
-            processos[j] = aux;
+            aux = copia[i];
+            copia[i] = copia[j];
+            copia[j] = aux;
         }
     }
-}
+}    
 
-// mostra os processos cadastrados
-printf("\n===== PROCESSOS =====\n");
+// mostra os processos na ordem de chegada
+
+int tempo_atual = 0;
+
+printf("\n===== EXECUCAO FCFS =====\n");
 
 for (int i = 0; i < n; i++)
 {
-    printf("Processo: %d | Chegada: %d | Duracao: %d\n",
-           processos[i].id,
-           processos[i].chegada,
-           processos[i].duracao);
+    if (tempo_atual < copia[i].chegada)
+    {
+        tempo_atual = copia[i].chegada;
+    }
+
+    int inicio = tempo_atual;
+    int espera = inicio - copia[i].chegada;
+
+    tempo_atual = tempo_atual + copia[i].duracao;
+
+    printf("Processo: %d | Chegada: %d | Duracao: %d | Inicio: %d | Termino: %d | Espera: %d\n",
+           copia[i].id, copia[i].chegada, copia[i].duracao,
+           inicio, tempo_atual, espera);
 }
 
-printf("=====================\n");
+printf("========================\n");
+
+free(copia);
 }
