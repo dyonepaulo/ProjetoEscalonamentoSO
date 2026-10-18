@@ -34,5 +34,6 @@ void fcfs(processo *processos, int n);
 // funcoes auxiliares 
 void tabela_execucao(processo *todos_processos, int n);
 void listar_processos(int n, processo *todos_processos);
+void remover_processo(processo *processos, int *n, int id);
 
 #endif

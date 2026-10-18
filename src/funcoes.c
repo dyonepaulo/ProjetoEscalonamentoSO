@@ -26,3 +26,25 @@ void listar_processos(int n, processo *todos_processos)
     }
     printf("+------+-------------+----------+---------+\n");
 }
+
+void remover_processo(processo *processos, int *n, int id)
+{
+    int index = -1;
+    for (int i = 0; i < *n; i++)
+    {
+        if (processos[i].id == id)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    if (index != -1)
+    {
+        for (int i = index; i < *n - 1; i++)
+        {
+            processos[i] = processos[i + 1];
+        }
+        (*n)--;
+    }
+}

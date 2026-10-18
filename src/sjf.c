@@ -6,7 +6,7 @@
 // feito pelo goat dyone
 void sjf(processo *processos, int n)
 {
-    if (processos[1].id == 0) // verfica se tem algum processo na lista
+    if (processos[0].id == 0) // verfica se tem algum processo na lista
     {
         printf("\n================"
                "\nNao há processos"

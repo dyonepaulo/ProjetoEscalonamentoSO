@@ -40,7 +40,8 @@ int main()
 
         case 3:
             system("clear");
-            // rr();
+            listar_processos(n, todos_processos);
+            rr(todos_processos, n);
             break;
         case 4:
             system("clear");
@@ -80,6 +81,7 @@ int main()
                 scanf("%d", &todos_processos[n - 1].chegada);
 
                 todos_processos[n - 1].id++;
+                
                 break;
             case 6:
                 system("clear");
