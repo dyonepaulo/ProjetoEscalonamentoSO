@@ -2,7 +2,7 @@
 #define FUNCOES_H
 
 // estruturas
-typedef struct no no; //estou dizendo que futuramente tera uma estrutura chamado no, ent o compilador sabe que ela existe mesmo antes de eu defini-la possibilitando a linha 18
+// typedef struct no no; //estou dizendo que futuramente tera uma estrutura chamado no, ent o compilador sabe que ela existe mesmo antes de eu defini-la possibilitando a linha 18
 
 typedef struct
 {
@@ -12,18 +12,18 @@ typedef struct
     int duracao;
 } processo;
 
-struct no
-{
-    processo processo;
-    no *proximo;
-};
+// struct no
+// {
+//     processo processo;
+//     no *proximo;
+// };
 
-typedef struct
-{
-    no *Inicio_fila;
-    no *fim_fila; // necessario para insercao de um novo processso
-    int tamanho_fila;
-} fila;
+// typedef struct
+// {
+//     no *Inicio_fila;
+//     no *fim_fila; // necessario para insercao de um novo processso
+//     int tamanho_fila;
+// } fila;
 
 // funcoes de cada tipo de escalonamento
 void priority(processo *processos, int n);
