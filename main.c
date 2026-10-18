@@ -6,6 +6,7 @@ int main()
 {
     int opcao = 67;
     int n = 0;
+    int id = 0;
     processo *todos_processos = calloc(1, sizeof(processo));
     processo *temp;
     system("clear");
@@ -52,6 +53,7 @@ int main()
         case 5:
             system("clear");
             n++;
+            id++;
             if (todos_processos[0].id != 0) // verifica se o primeiro indice do vetor tem processo ou n
             {
                 temp = realloc(todos_processos, n * sizeof(processo));
@@ -79,7 +81,7 @@ int main()
                 printf("\nDigite a chegada do processo: ");
                 scanf("%d", &todos_processos[n - 1].chegada);
 
-                todos_processos[n - 1].id = n;
+                todos_processos[n - 1].id = id;
                 break;
             case 6:
                 system("clear");
