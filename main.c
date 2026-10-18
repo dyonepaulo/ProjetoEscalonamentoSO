@@ -4,11 +4,12 @@
 
 int main()
 {
-    int opcao = 67;
-    int n = 0;
-    int id = 0;
+    int opcao = 67; // variavel utilizada para escolher as opcaoes do switch alem de servir como condicao pro while do menu
+    int n = 0;      // guardar o tamanho da lista, necessario para saber ate onde os for devem pecorrer a lista sem acessar memoria n alocada
+    int id = 0;     // necessario para preencher id de forma que cada processo tenha um unico
+    int remover_id;
     processo *todos_processos = calloc(1, sizeof(processo));
-    processo *temp;
+    processo *temp; // utilizado para evitar perda do endereco da lista de processos caso ocorra uma falha
     system("clear");
     while (opcao != 0)
     {
@@ -28,10 +29,18 @@ int main()
         switch (opcao)
         {
         case 1:
-            fcfs (todos_processos, n);
+            system("clear");
+            fcfs(todos_processos, n);
             break;
         case 2:
             system("clear");
+            if (n == 0) // verfica se tem algum processo na lista
+            {
+                printf("\n================"
+                       "\nNao há processos"
+                       "\n================");
+                break;
+            }
             printf("\n+---------------------------------------+"
                    "\n| Lista dos processos sem escalonamento |\n");
             listar_processos(n, todos_processos);
@@ -40,11 +49,25 @@ int main()
 
         case 3:
             system("clear");
+            if (n == 0) // verfica se tem algum processo na lista
+            {
+                printf("\n================"
+                       "\nNao há processos"
+                       "\n================");
+                break;
+            }
             listar_processos(n, todos_processos);
             rr(todos_processos, n);
             break;
         case 4:
             system("clear");
+            if (n == 0) // verfica se tem algum processo na lista
+            {
+                printf("\n================"
+                       "\nNao há processos"
+                       "\n================");
+                break;
+            }
             printf("\n+---------------------------------------+"
                    "\n| Lista dos processos sem escalonamento |\n");
             listar_processos(n, todos_processos);
@@ -57,7 +80,7 @@ int main()
             if (todos_processos[0].id != 0) // verifica se o primeiro indice do vetor tem processo ou n
             {
                 temp = realloc(todos_processos, n * sizeof(processo));
-                if (temp == NULL)
+                if (temp == NULL) // verifica se o redimencionamento da lista de processos ocorreu sem erros
                 {
                     printf("Erro de Alocacao");
                     exit(1);
@@ -85,10 +108,21 @@ int main()
                 break;
             case 6:
                 system("clear");
+                if (n == 0) // verfica se tem algum processo na lista
+                {
+                    printf("\n================"
+                           "\nNao há processos"
+                           "\n================");
+                    break;
+                }
+                listar_processos(n, todos_processos);
+                printf("\nDigite o ID do processo que deseja remover!!!\n");
+                scanf("%d", &remover_id);
+                remover_processo(todos_processos, &n, remover_id);
                 break;
             case 7:
                 system("clear");
-                if (todos_processos[0].id == 0) // verfica se tem algum processo na lista
+                if (n == 0) // verfica se tem algum processo na lista
                 {
                     printf("\n================"
                            "\nNao há processos"

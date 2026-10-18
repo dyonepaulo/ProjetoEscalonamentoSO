@@ -6,13 +6,6 @@
 // feito pelo goat dyone
 void sjf(processo *processos, int n)
 {
-    if (processos[0].id == 0) // verfica se tem algum processo na lista
-    {
-        printf("\n================"
-               "\nNao há processos"
-               "\n================");
-        return;
-    }
     processo *todos_processos = malloc(n * sizeof(*todos_processos));
     for (int i = 0; i < n; i++)
     {
