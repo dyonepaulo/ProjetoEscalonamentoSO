@@ -27,8 +27,7 @@ int main()
         switch (opcao)
         {
         case 1:
-            system("clear");
-            // fcfs();
+            fcfs (todos_processos, n);
             break;
         case 2:
             system("clear");
@@ -80,8 +79,7 @@ int main()
                 printf("\nDigite a chegada do processo: ");
                 scanf("%d", &todos_processos[n - 1].chegada);
 
-                todos_processos[n - 1].id++;
-                
+                todos_processos[n - 1].id = n;
                 break;
             case 6:
                 system("clear");
