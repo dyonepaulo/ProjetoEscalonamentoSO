@@ -3,13 +3,6 @@
 // feito por mim
 void rr(processo *processos, int n)
 {
-    if (processos[0].id == 0) // verfica se tem algum processo na lista
-    {
-        printf("\n================"
-               "\nNao há processos"
-               "\n================");
-        return;
-    }
     printf("\nA ordem de execução dos processos será: \n");
 
     int yoh = 67;    //optei por printar enquanto tiver duração, já q rr o processo é executado e se n terminar vai pro final da fila
