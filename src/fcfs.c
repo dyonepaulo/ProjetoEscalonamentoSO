@@ -48,25 +48,12 @@ for (int i = 0; i < n - 1; i++)
 
 // mostra os processos na ordem de chegada
 
-int tempo_atual = 0;
-
 printf("\n===== EXECUCAO FCFS =====\n");
 
 for (int i = 0; i < n; i++)
 {
-    if (tempo_atual < copia[i].chegada)
-    {
-        tempo_atual = copia[i].chegada;
-    }
-
-    int inicio = tempo_atual;
-    int espera = inicio - copia[i].chegada;
-
-    tempo_atual = tempo_atual + copia[i].duracao;
-
-    printf("Processo: %d | Chegada: %d | Duracao: %d | Inicio: %d | Termino: %d | Espera: %d\n",
-           copia[i].id, copia[i].chegada, copia[i].duracao,
-           inicio, tempo_atual, espera);
+    printf("Processo: %d | Chegada: %d | Duracao: %d\n",
+           copia[i].id, copia[i].chegada, copia[i].duracao);
 }
 
 printf("========================\n");
