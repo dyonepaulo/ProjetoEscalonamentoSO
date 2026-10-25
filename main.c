@@ -11,6 +11,11 @@ int main()
     processo *todos_processos = calloc(1, sizeof(processo));
     processo *temp; // utilizado para evitar perda do endereco da lista de processos caso ocorra uma falha
     system("clear");
+    if (todos_processos == NULL)
+    {
+        printf("Erro de Alocacao");
+        exit(1);
+    }
     while (opcao != 0)
     {
 
