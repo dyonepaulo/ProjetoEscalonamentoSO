@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../library.h"
 // feito por mim
 void rr(processo *processos, int n)
